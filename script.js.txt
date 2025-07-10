@@ -1,0 +1,42 @@
+async function loadPosts() {
+    const res = await fetch('http://127.0.0.1:8000/api/posts/');
+    const posts = await res.json();
+    const postList = document.getElementById('post-list');
+    postList.innerHTML = '';
+    posts.forEach(post => {
+        const div = document.createElement('div');
+        div.className = 'post';
+        div.innerHTML = `
+            <p><strong>${post.user.username}</strong>: ${post.content}</p>
+            <button onclick="likePost(${post.id})">Like (${post.likes_count})</button>
+        `;
+        postList.appendChild(div);
+    });
+}
+
+async function createPost() {
+    const content = document.getElementById('post-content').value;
+    await fetch('http://127.0.0.1:8000/api/posts/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': 'Bearer YOUR_JWT_TOKEN' (add when JWT auth integrated)
+        },
+        body: JSON.stringify({ content })
+    });
+    document.getElementById('post-content').value = '';
+    loadPosts();
+}
+
+async function likePost(postId) {
+    await fetch(`http://127.0.0.1:8000/api/posts/${postId}/like/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': 'Bearer YOUR_JWT_TOKEN' (add when JWT auth integrated)
+        },
+    });
+    loadPosts();
+}
+
+loadPosts();

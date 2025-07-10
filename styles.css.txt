@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+    background: #f0f0f0;
+    padding: 20px;
+}
+
+#post-list {
+    margin-top: 20px;
+}
+
+.post {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}

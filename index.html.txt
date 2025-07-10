@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Social App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Mini Social Media App</h1>
+    <div id="post-list"></div>
+    <textarea id="post-content" placeholder="Write a post..."></textarea><br>
+    <button onclick="createPost()">Post</button>
+    <script src="script.js"></script>
+</body>
+</html>
