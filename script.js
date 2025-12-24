@@ -20,8 +20,7 @@ async function createPost() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // 'Authorization': 'Bearer YOUR_JWT_TOKEN' (add when JWT auth integrated)
-        },
+            },
         body: JSON.stringify({ content })
     });
     document.getElementById('post-content').value = '';
@@ -40,3 +39,4 @@ async function likePost(postId) {
 }
 
 loadPosts();
+
